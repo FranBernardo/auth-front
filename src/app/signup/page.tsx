@@ -7,6 +7,7 @@ import { useForm } from 'react-hook-form'
 import { z } from "zod"
 
 
+
 const signinSchema = z.object({
   name: z.string().min(3),
   email: z.string().email(),
@@ -42,7 +43,14 @@ export default function SignupPage() {
         className="bg-white p-6 shadow-md rounded-lg w-96"
       >
 
-        <h2> Criar Conta</h2>
+        <h2 className='text-xl font-bold mb-4'> Criar Conta</h2>
+
+        <input className='input w-full' type="text" placeholder='Nome' {...register("name")} />
+        {errors.name && <span className="text-red-500">{errors.name.message}</span>}
+        <input className="input w-full mt-2" type="email" placeholder='Email' {...register("email")} />
+        {errors.email && <span>{errors.email.message}</span>}
+        <input className="input w-full mt-2" type="password" placeholder='Senha' {...register("password")} />
+        {errors.password && <span>{errors.password.message}</span>}
       </form>
     </div>
   )

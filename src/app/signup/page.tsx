@@ -37,7 +37,7 @@ export default function SignupPage() {
   }
 
   return (
-    <div className='flex min-h-screen justify-center items-center'>
+    <div className='shadow-xl flex min-h-screen justify-center items-center'>
       <form
         onSubmit={handleSubmit(onSubmit)}
         className="bg-white p-6 shadow-md rounded-lg w-96"
@@ -51,6 +51,8 @@ export default function SignupPage() {
         {errors.email && <span>{errors.email.message}</span>}
         <input className="input w-full mt-2" type="password" placeholder='Senha' {...register("password")} />
         {errors.password && <span>{errors.password.message}</span>}
+
+        <button className="btn btn-primary w-full mt-4" type="submit">Cadastrar</button>
       </form>
     </div>
   )

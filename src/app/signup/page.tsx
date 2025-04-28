@@ -1,3 +1,6 @@
+/* eslint-disable @next/next/no-img-element */
+/* eslint-disable @typescript-eslint/no-explicit-any */
+/* eslint-disable @typescript-eslint/no-unused-vars */
 "use client"
 import { zodResolver } from '@hookform/resolvers/zod'
 import axios from 'axios'
@@ -5,6 +8,8 @@ import { useRouter } from "next/navigation"
 import { useState } from 'react'
 import { useForm } from 'react-hook-form'
 import { z } from "zod"
+import './page.css'
+
 
 
 
@@ -37,23 +42,75 @@ export default function SignupPage() {
   }
 
   return (
-    <div className='shadow-xl flex min-h-screen justify-center items-center'>
-      <form
-        onSubmit={handleSubmit(onSubmit)}
-        className="bg-white p-6 shadow-md rounded-lg w-96"
-      >
+    <div className="container">
+      <div className="inner-container">
+        <img
+          alt="Your Company"
+          className="logo"
+        />
+        <h2 className="title">
+          Sign in to your account
+        </h2>
+      </div>
 
-        <h2 className='text-xl font-bold mb-4'> Criar Conta</h2>
+      <div className="form-container">
+        <form action="#" method="POST" className="form">
+          <div>
+            <label htmlFor="email" className="label">
+              Email address
+            </label>
+            <div className="input-group">
+              <input
+                id="email"
+                name="email"
+                type="email"
+                required
+                autoComplete="email"
+                placeholder="you@example.com"
+                className="input"
+              />
+            </div>
+          </div>
 
-        <input className='input w-full' type="text" placeholder='Nome' {...register("name")} />
-        {errors.name && <span className="text-red-500">{errors.name.message}</span>}
-        <input className="input w-full mt-2" type="email" placeholder='Email' {...register("email")} />
-        {errors.email && <span>{errors.email.message}</span>}
-        <input className="input w-full mt-2" type="password" placeholder='Senha' {...register("password")} />
-        {errors.password && <span>{errors.password.message}</span>}
+          <div>
+            <div className="password-options">
+              <label htmlFor="password" className="label">
+                Password
+              </label>
+              <div className="text-sm">
+                <a href="#" className="forgot-password">
+                  Forgot password?
+                </a>
+              </div>
+            </div>
+            <div className="input-group">
+              <input
+                id="password"
+                name="password"
+                type="password"
+                required
+                autoComplete="current-password"
+                placeholder="••••••••"
+                className="input"
+              />
+            </div>
+          </div>
 
-        <button className="btn btn-primary w-full mt-4" type="submit">Cadastrar</button>
-      </form>
+          <div>
+            <button type="submit" className="button">
+              Sign in
+            </button>
+          </div>
+        </form>
+
+        <p className="footer-text">
+          Not a member?{' '}
+          <a href="#">
+            Start a 14 day free trial
+          </a>
+        </p>
+      </div>
     </div>
+
   )
 }

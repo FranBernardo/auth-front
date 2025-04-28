@@ -1,10 +1,10 @@
 "use client"
-import { AuthContext } from '@/context/AuthContext'
 import { useRouter } from "next/navigation"
 import { useContext } from 'react'
 import { z } from "zod"
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
+import { AuthContext } from '../../context/AuthContext'
 
 const loginSchema = z.object({
   email: z.string().email(),
